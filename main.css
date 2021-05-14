@@ -47,6 +47,15 @@ button:hover {
   );
 }
 
+#ue3b {
+  background-image: linear-gradient(
+    to right,
+    #1a2980 0%,
+    #26d0ce 51%,
+    #1a2980 100%
+  );
+}
+
 #ue4 {
   background-image: linear-gradient(
     to right,
