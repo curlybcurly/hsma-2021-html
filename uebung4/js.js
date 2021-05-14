@@ -1,15 +1,32 @@
 const videoEle = document.querySelector("video");
 
-const playMedia = function () {
-  videoEle.play();
+const mediaPlayPause = function () {
+  if (
+    videoEle.currentTime > 0 &&
+    !videoEle.paused &&
+    !videoEle.ended &&
+    videoEle.readyState > 2
+  ) {
+    videoEle.pause();
+    buttonPlayPause.src = "img/play.svg";
+  } else {
+    videoEle.play();
+    buttonPlayPause.src = "img/pause.svg";
+  }
 };
 
-const pauseMedia = function () {
-  videoEle.pause();
+const muteMedia = function () {
+  if (videoEle.muted == true) {
+    videoEle.muted = false;
+    muteButton.src = "img/unmute.svg";
+  } else {
+    videoEle.muted = true;
+    muteButton.src = "img/mute.svg";
+  }
 };
 
-const playButton = document.querySelector("#play");
-playButton.addEventListener("click", playMedia);
+const buttonPlayPause = document.querySelector("#playpause");
+buttonPlayPause.addEventListener("click", mediaPlayPause);
 
-const pauseButton = document.querySelector("#pause");
-pauseButton.addEventListener("click", pauseMedia);
+const muteButton = document.querySelector("#mute");
+muteButton.addEventListener("click", muteMedia);
