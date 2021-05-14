@@ -18,11 +18,7 @@ video {
   margin: 2%;
 }
 
-#play:hover {
-  opacity: 1;
-}
-
-#pause:hover {
+img:hover {
   opacity: 1;
 }
 
