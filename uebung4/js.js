@@ -32,6 +32,6 @@ const muteButton = document.querySelector("#mute");
 muteButton.addEventListener("click", muteMedia);
 
 videoEle.addEventListener("ended", mediaEnded);
-function mediaEnded(e) {
+function mediaEnded() {
   buttonPlayPause.src = "img/play.svg";
 }
