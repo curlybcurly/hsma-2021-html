@@ -40,9 +40,9 @@ button:hover {
 #ue2a {
   background-image: linear-gradient(
     to right,
-    #ff512f 0%,
-    #dd2476 51%,
-    #ff512f 100%
+    #be1e66 0%,
+    #ff9f31 51%,
+    #be1e66 100%
   );
 }
 
@@ -58,8 +58,8 @@ button:hover {
 #ue4 {
   background-image: linear-gradient(
     to right,
-    #aa076b 0%,
-    #61045f 51%,
-    #aa076b 100%
+    #61045f 0%,
+    #e62c9e 51%,
+    #61045f 100%
   );
 }
