@@ -38,28 +38,13 @@ button:hover {
 }
 
 #ue2a {
-  background-image: linear-gradient(
-    to right,
-    #be1e66 0%,
-    #ff9f31 51%,
-    #be1e66 100%
-  );
+  background: radial-gradient(circle at 0% 0%, #ff9f31, #be1e66);
 }
 
 #ue3b {
-  background-image: linear-gradient(
-    to right,
-    #1a2980 0%,
-    #26d0ce 51%,
-    #1a2980 100%
-  );
+  background: radial-gradient(circle at 0% 0%, #26d0ce, #1a2980);
 }
 
 #ue4 {
-  background-image: linear-gradient(
-    to right,
-    #61045f 0%,
-    #e62c9e 51%,
-    #61045f 100%
-  );
+  background: radial-gradient(circle at 0% 0%, #ff6c8c, #61045f);
 }
