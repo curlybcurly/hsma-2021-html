@@ -48,3 +48,7 @@ button:hover {
 #ue4 {
   background: radial-gradient(circle at 0% 0%, #ff6c8c, #61045f);
 }
+
+#game {
+  background: radial-gradient(circle at 0% 0%, #bfda2b, #266104);
+}
