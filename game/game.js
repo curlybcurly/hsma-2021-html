@@ -1,6 +1,6 @@
 // ----- VARS -----
 
-const lb = document.querySelector('#lb');
+/* const lb = document.querySelector('#lb');
 const mb = document.querySelector('#mb');
 const rb = document.querySelector('#rb');
 const lm = document.querySelector('#lm');
@@ -8,7 +8,7 @@ const mm = document.querySelector('#mm');
 const rm = document.querySelector('#rm');
 const lt = document.querySelector('#lt');
 const mt = document.querySelector('#mt');
-const rt = document.querySelector('#rt');
+const rt = document.querySelector('#rt'); */
 
 var Moves = {
   // KEY SWITCHES
@@ -19,13 +19,90 @@ var Moves = {
 };
 
 //SETUP GATES
+
 const lbgate1 = {
   x: 1001,
   y: 569,
+  hopside: 1030,
+  hopfrom: 603,
+  hopto: 540,
 };
 const mbgate1 = {
   x: 29,
   y: 569,
+  hopside: 0,
+  hopfrom: 603,
+  hopto: 540,
+};
+const mbgate2 = {
+  x: 1001,
+  y: 461,
+  hopside: 1030,
+  hopfrom: 495,
+  hopto: 432,
+};
+const rbgate2 = {
+  x: 29,
+  y: 461,
+  hopside: 0,
+  hopfrom: 495,
+  hopto: 432,
+};
+const rbgate3 = {
+  x: 785,
+  y: 29,
+  hopside: 0,
+  hopfrom: 819,
+  hopto: 756,
+};
+const rmgate3 = {
+  x: 785,
+  y: 1001,
+  hopside: 1030,
+  hopfrom: 819,
+  hopto: 756,
+};
+const mbgate4 = {
+  x: 677,
+  y: 29,
+  hopside: 0,
+  hopfrom: 711,
+  hopto: 648,
+};
+const mmgate4 = {
+  x: 677,
+  y: 1001,
+  hopside: 1030,
+  hopfrom: 711,
+  hopto: 648,
+};
+const mmgate5 = {
+  x: 29,
+  y: 569,
+  hopside: 0,
+  hopfrom: 603,
+  hopto: 540,
+};
+const lmgate5 = {
+  x: 1001,
+  y: 569,
+  hopside: 1030,
+  hopfrom: 603,
+  hopto: 540,
+};
+const mbgate6 = {
+  x: 1001,
+  y: 785,
+  hopside: 1030,
+  hopfrom: 819,
+  hopto: 756,
+};
+const rbgate6 = {
+  x: 29,
+  y: 785,
+  hopside: 0,
+  hopfrom: 819,
+  hopto: 756,
 };
 
 // TILE UPDATE
@@ -46,7 +123,9 @@ var Key = {
 
 // KEY POSITIONS
 var keyOne = { x: 230, y: 554, r: 40 };
-var keyTwo = { x: 230, y: 554, r: 40 };
+var keyTwo = { x: 122, y: 122, r: 40 };
+var keyThree = { x: 122, y: 554, r: 40 };
+var keyFour = { x: 662, y: 878, r: 40 };
 
 // CHARACTER POSITION
 var coord = {
@@ -100,7 +179,7 @@ function main() {
 
   // TILE Display
   switch (currtile) {
-    case lb:
+    case lb: // left bottom
       character = document.querySelector('#character-lb');
 
       if (lb.style.display == 'none') {
@@ -110,51 +189,143 @@ function main() {
 
       lb.style.display = 'block';
       mb.style.display = 'none';
+      rb.style.display = 'none';
+      rm.style.display = 'none';
+      mm.style.display = 'none';
+      lm.style.display = 'none';
 
       break;
 
-    case mb:
+    case mb: // middle bottom
       character = document.querySelector('#character-mb');
 
-      if (mb.style.display == 'none') {
+      if (mb.style.display == 'none' && lb.style.display == 'block') {
         coord.x = mbgate1.x;
         coord.y = mbgate1.y;
+      }
+      if (
+        mb.style.display == 'none' &&
+        rb.style.display == 'block' &&
+        coord.y > mbgate2.hopto &&
+        coord.y < mbgate2.hopfrom
+      ) {
+        coord.x = mbgate2.x;
+        coord.y = mbgate2.y;
+      }
+      if (mb.style.display == 'none' && mm.style.display == 'block') {
+        coord.x = mbgate4.x;
+        coord.y = mbgate4.y;
+      }
+      if (
+        mb.style.display == 'none' &&
+        rb.style.display == 'block' &&
+        coord.y > mbgate6.hopto &&
+        coord.y < mbgate6.hopfrom
+      ) {
+        coord.x = mbgate6.x;
+        coord.y = mbgate6.y;
       }
 
       lb.style.display = 'none';
       mb.style.display = 'block';
+      rb.style.display = 'none';
+      rm.style.display = 'none';
+      mm.style.display = 'none';
+      lm.style.display = 'none';
 
       break;
+    case rb: // right bottom
+      character = document.querySelector('#character-rb');
 
-    case rb:
-      // Anweisungen werden ausgeführt,
-      // falls expression mit valueN übereinstimmt
+      if (rb.style.display == 'none' && rm.style.display == 'block') {
+        coord.x = rbgate3.x;
+        coord.y = rbgate3.y;
+      }
+
+      if (
+        rb.style.display == 'none' &&
+        mb.style.display == 'block' &&
+        coord.y > mbgate2.hopto &&
+        coord.y < mbgate2.hopfrom
+      ) {
+        coord.x = rbgate2.x;
+        coord.y = rbgate2.y;
+      }
+
+      if (
+        rb.style.display == 'none' &&
+        mb.style.display == 'block' &&
+        coord.y > mbgate6.hopto &&
+        coord.y < mbgate6.hopfrom
+      ) {
+        coord.x = rbgate6.x;
+        coord.y = rbgate6.y;
+      }
+
+      lb.style.display = 'none';
+      mb.style.display = 'none';
+      rb.style.display = 'block';
+      rm.style.display = 'none';
+      mm.style.display = 'none';
+      lm.style.display = 'none';
+
       break;
-    case lm:
-      // Anweisungen werden ausgeführt,
-      // falls expression mit valueN übereinstimmt
+    case rm: // right middle
+      character = document.querySelector('#character-rm');
+
+      if (rm.style.display == 'none' && rb.style.display == 'block') {
+        coord.x = rmgate3.x;
+        coord.y = rmgate3.y;
+      }
+
+      lb.style.display = 'none';
+      mb.style.display = 'none';
+      rb.style.display = 'none';
+      rm.style.display = 'block';
+      mm.style.display = 'none';
+      lm.style.display = 'none';
+
       break;
-    case mm:
-      // Anweisungen werden ausgeführt,
-      // falls expression mit valueN übereinstimmt
+    case mm: // middle middle
+      character = document.querySelector('#character-mm');
+
+      if (mm.style.display == 'none' && mb.style.display == 'block') {
+        coord.x = mmgate4.x;
+        coord.y = mmgate4.y;
+      }
+
+      if (mm.style.display == 'none' && lm.style.display == 'block') {
+        coord.x = mmgate5.x;
+        coord.y = mmgate5.y;
+      }
+
+      lb.style.display = 'none';
+      mb.style.display = 'none';
+      rb.style.display = 'none';
+      rm.style.display = 'none';
+      mm.style.display = 'block';
+      lm.style.display = 'none';
+
       break;
-    case rm:
-      // Anweisungen werden ausgeführt,
-      // falls expression mit valueN übereinstimmt
-      break;
-    case lt:
-      // Anweisungen werden ausgeführt,
-      // falls expression mit valueN übereinstimmt
-      break;
-    case mt:
-      // Anweisungen werden ausgeführt,
-      // falls expression mit valueN übereinstimmt
-      break;
-    case rt:
-      // Anweisungen werden ausgeführt,
-      // falls expression mit valueN übereinstimmt
+    case lm: // left middle
+      character = document.querySelector('#character-lm');
+
+      if (lm.style.display == 'none' && mm.style.display == 'block') {
+        coord.x = lmgate5.x;
+        coord.y = lmgate5.y;
+      }
+
+      lb.style.display = 'none';
+      mb.style.display = 'none';
+      rb.style.display = 'none';
+      rm.style.display = 'none';
+      mm.style.display = 'none';
+      lm.style.display = 'block';
+
       break;
   }
+
+  console.log('X= ' + coord.x + ' Y= ' + coord.y);
 
   // KEY COLLECTION
   // KEY ONE
@@ -162,7 +333,7 @@ function main() {
   var dy = coord.y - keyOne.y;
   var distance = Math.sqrt(dx * dx + dy * dy);
 
-  if (Key.one === false && distance < coord.r + keyOne.r) {
+  if (Key.one === false && distance < coord.r + keyOne.r && currtile == lb) {
     document.querySelector('#key1-symbol').remove();
     document.querySelector('#key1-gate').remove();
     Key.one = true;
@@ -178,11 +349,57 @@ function main() {
   var dy = coord.y - keyTwo.y;
   var distance = Math.sqrt(dx * dx + dy * dy);
 
-  if (Key.one === false && distance < coord.r + keyTwo.r) {
+  if (Key.two === false && distance < coord.r + keyTwo.r && currtile == rm) {
     if (distance < coord.r + keyTwo.r) {
       document.querySelector('#key2-symbol').remove();
       document.querySelector('#key2-gate').remove();
+      Key.two = true;
     }
+  }
+
+  if (Key.two == true) {
+    if (document.querySelector('#key2-gate'))
+      document.querySelector('#key2-gate').remove();
+  }
+
+  // KEY THREE
+  var dx = coord.x - keyThree.x;
+  var dy = coord.y - keyThree.y;
+  var distance = Math.sqrt(dx * dx + dy * dy);
+
+  if (
+    Key.three === false &&
+    distance < coord.r + keyThree.r &&
+    currtile == lm
+  ) {
+    if (distance < coord.r + keyThree.r) {
+      document.querySelector('#key3-symbol').remove();
+      document.querySelector('#key3-gate').remove();
+      Key.three = true;
+    }
+  }
+
+  if (Key.three == true) {
+    if (document.querySelector('#key3-gate'))
+      document.querySelector('#key3-gate').remove();
+  }
+
+  // KEY FOUR
+  var dx = coord.x - keyFour.x;
+  var dy = coord.y - keyFour.y;
+  var distance = Math.sqrt(dx * dx + dy * dy);
+
+  if (Key.four === false && distance < coord.r + keyFour.r && currtile == rb) {
+    if (distance < coord.r + keyFour.r) {
+      document.querySelector('#key4-symbol').remove();
+      document.querySelector('#key4-gate').remove();
+      Key.four = true;
+    }
+  }
+
+  if (Key.four == true) {
+    if (document.querySelector('#key4-gate'))
+      document.querySelector('#key4-gate').remove();
   }
 
   // CHARACTER POSITION UPDATE
@@ -193,21 +410,109 @@ function main() {
 
   // GATES
   if (
+    // from LB to MB
     currtile == lb &&
-    coord.x === 1030 &&
-    coord.y > 540 &&
-    coord.y < 603 &&
+    coord.x === lbgate1.hopside &&
+    coord.y < lbgate1.hopfrom &&
+    coord.y > lbgate1.hopto &&
     Key.one == true
   ) {
     currtile = mb;
   } else if (
+    // from MB to LB
     currtile == mb &&
-    coord.x === 0 &&
-    coord.y > 540 &&
-    coord.y < 603 &&
+    coord.x === mbgate1.hopside &&
+    coord.y < mbgate1.hopfrom &&
+    coord.y > mbgate1.hopto &&
     Key.one == true
   ) {
     currtile = lb;
+  } else if (
+    // from MB to RB
+    currtile == mb &&
+    coord.x === mbgate2.hopside &&
+    coord.y < mbgate2.hopfrom &&
+    coord.y > mbgate2.hopto // && Key.one == true
+  ) {
+    currtile = rb;
+  } else if (
+    // from RB to MB
+    currtile == rb &&
+    coord.x === rbgate2.hopside &&
+    coord.y < rbgate2.hopfrom &&
+    coord.y > rbgate2.hopto // && Key.one == true
+  ) {
+    currtile = mb;
+  } else if (
+    // from RB to RM
+    currtile == rb &&
+    coord.y === rbgate3.hopside &&
+    coord.x < rbgate3.hopfrom &&
+    coord.x > rbgate3.hopto // && Key.one == true
+  ) {
+    currtile = rm;
+  } else if (
+    // from RM to RB
+    currtile == rm &&
+    coord.y === rmgate3.hopside &&
+    coord.x < rmgate3.hopfrom &&
+    coord.x > rmgate3.hopto // && Key.one == true
+  ) {
+    currtile = rb;
+  } else if (
+    // from MB to MM
+    currtile == mb &&
+    coord.y === mbgate4.hopside &&
+    coord.x < mbgate4.hopfrom &&
+    coord.x > mbgate4.hopto &&
+    Key.two == true
+  ) {
+    currtile = mm;
+  } else if (
+    // from MM to MB
+    currtile == mm &&
+    coord.y === mmgate4.hopside &&
+    coord.x < mmgate4.hopfrom &&
+    coord.x > mmgate4.hopto &&
+    Key.two == true
+  ) {
+    currtile = mb;
+  } else if (
+    // from MM to LM
+    currtile == mm &&
+    coord.x === mmgate5.hopside &&
+    coord.y < mmgate5.hopfrom &&
+    coord.y > mmgate5.hopto // && Key.two == true
+  ) {
+    currtile = lm;
+  } else if (
+    // from LM to MM
+    currtile == lm &&
+    coord.x === lmgate5.hopside &&
+    coord.y < lmgate5.hopfrom &&
+    coord.y > lmgate5.hopto // && Key.two == true
+  ) {
+    currtile = mm;
+  } else if (
+    // from MB to RB2
+    currtile == mb &&
+    coord.x === mbgate6.hopside &&
+    coord.y < mbgate6.hopfrom &&
+    coord.y > mbgate6.hopto &&
+    Key.three == true
+  ) {
+    currtile = rb;
+    // window.alert('hm');
+  } else if (
+    // from RB2 to MB
+    currtile == rb &&
+    coord.x === rbgate6.hopside &&
+    coord.y < rbgate6.hopfrom &&
+    coord.y > rbgate6.hopto &&
+    Key.three == true
+  ) {
+    currtile = mb;
+    // window.alert('hm');
   }
 
   // CHARACTER ACCELERATION
