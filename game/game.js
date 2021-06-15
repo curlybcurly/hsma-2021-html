@@ -1,14 +1,6 @@
 // ----- VARS -----
 
-/* const lb = document.querySelector('#lb');
-const mb = document.querySelector('#mb');
-const rb = document.querySelector('#rb');
-const lm = document.querySelector('#lm');
-const mm = document.querySelector('#mm');
-const rm = document.querySelector('#rm');
-const lt = document.querySelector('#lt');
-const mt = document.querySelector('#mt');
-const rt = document.querySelector('#rt'); */
+var hitswitch;
 
 var Moves = {
   // KEY SWITCHES
@@ -25,42 +17,42 @@ const lbgate1 = {
   y: 569,
   hopside: 1030,
   hopfrom: 603,
-  hopto: 540,
+  hopto: 539,
 };
 const mbgate1 = {
   x: 29,
   y: 569,
   hopside: 0,
   hopfrom: 603,
-  hopto: 540,
+  hopto: 539,
 };
 const mbgate2 = {
   x: 1001,
   y: 461,
   hopside: 1030,
   hopfrom: 495,
-  hopto: 432,
+  hopto: 431,
 };
 const rbgate2 = {
   x: 29,
   y: 461,
   hopside: 0,
   hopfrom: 495,
-  hopto: 432,
+  hopto: 431,
 };
 const rbgate3 = {
   x: 785,
   y: 29,
   hopside: 0,
   hopfrom: 819,
-  hopto: 756,
+  hopto: 755,
 };
 const rmgate3 = {
   x: 785,
   y: 1001,
   hopside: 1030,
   hopfrom: 819,
-  hopto: 756,
+  hopto: 755,
 };
 const mbgate4 = {
   x: 677,
@@ -143,6 +135,7 @@ const coordBound = {
 };
 
 // ACCELERATION SETUP
+var speed = 2;
 var speedUp = 0;
 const max = 1.5;
 
@@ -159,7 +152,6 @@ window.onkeydown = function (e) {
   if (key === 38) Moves.up = true;
   if (key === 39) Moves.right = true;
   if (key === 40) Moves.down = true;
-  console.log(speedUp);
 };
 
 window.onkeyup = function (e) {
@@ -172,10 +164,155 @@ window.onkeyup = function (e) {
   else speedUp = 0;
 };
 
+// ----- SVG Walls STUFF -----^
+const wallslb = [
+  { id: 1, x: 0, y: 0, w: 324, h: 108 },
+  { id: 2, x: 432, y: 0, w: 648, h: 108 },
+  { id: 3, x: 0, y: 108, w: 108, h: 108 },
+  { id: 4, x: 540, y: 108, w: 540, h: 108 },
+  { id: 5, x: 0, y: 216, w: 108, h: 108 },
+  { id: 6, x: 648, y: 216, w: 432, h: 108 },
+  { id: 7, x: 0, y: 324, w: 1080, h: 108 },
+  { id: 8, x: 0, y: 432, w: 432, h: 108 },
+  { id: 9, x: 972, y: 432, w: 108, h: 108 },
+  { id: 10, x: 0, y: 540, w: 216, h: 108 },
+  { id: 11, x: 0, y: 648, w: 432, h: 108 },
+  { id: 12, x: 972, y: 648, w: 108, h: 108 },
+  { id: 13, x: 0, y: 756, w: 108, h: 108 },
+  { id: 14, x: 540, y: 756, w: 540, h: 108 },
+  { id: 15, x: 432, y: 864, w: 648, h: 108 },
+  { id: 16, x: 324, y: 972, w: 756, h: 108 },
+];
+
+function drawWallsLb() {
+  for (i = 0; i < wallslb.length; i++) {
+    var svgns = 'http://www.w3.org/2000/svg';
+    var rect = document.createElementNS(svgns, 'rect');
+
+    rect.setAttribute('id', wallslb[i].id);
+    rect.setAttribute('x', wallslb[i].x);
+    rect.setAttribute('y', wallslb[i].y);
+    rect.setAttribute('height', wallslb[i].h);
+    rect.setAttribute('width', wallslb[i].w);
+    rect.setAttribute('fill', '#000');
+    document.getElementById('lb').appendChild(rect);
+  }
+}
+
+const wallsmb = [
+  { id: 1, x: 0, y: 0, w: 648, h: 108 },
+  { id: 2, x: 756, y: 0, w: 324, h: 108 },
+  { id: 3, x: 0, y: 108, w: 216, h: 108 },
+  { id: 4, x: 864, y: 108, w: 216, h: 108 },
+  { id: 5, x: 0, y: 216, w: 108, h: 108 },
+  { id: 6, x: 324, y: 216, w: 324, h: 108 },
+  { id: 7, x: 972, y: 216, w: 108, h: 108 },
+  { id: 8, x: 0, y: 324, w: 108, h: 108 },
+  { id: 9, x: 432, y: 324, w: 324, h: 108 },
+  { id: 10, x: 972, y: 324, w: 108, h: 108 },
+  { id: 11, x: 0, y: 432, w: 216, h: 108 },
+  { id: 12, x: 540, y: 432, w: 108, h: 108 },
+  { id: 13, x: 432, y: 540, w: 108, h: 108 },
+  { id: 13, x: 756, y: 540, w: 324, h: 108 },
+  { id: 14, x: 0, y: 648, w: 108, h: 108 },
+  { id: 15, x: 864, y: 648, w: 216, h: 108 },
+  { id: 16, x: 0, y: 756, w: 216, h: 108 },
+  { id: 16, x: 0, y: 864, w: 216, h: 108 },
+  { id: 16, x: 648, y: 864, w: 432, h: 108 },
+  { id: 16, x: 0, y: 972, w: 1080, h: 108 },
+];
+
+function drawWallsMb() {
+  for (i = 0; i < wallsmb.length; i++) {
+    var svgns = 'http://www.w3.org/2000/svg';
+    var rect = document.createElementNS(svgns, 'rect');
+
+    rect.setAttribute('id', wallsmb[i].id);
+    rect.setAttribute('x', wallsmb[i].x);
+    rect.setAttribute('y', wallsmb[i].y);
+    rect.setAttribute('height', wallsmb[i].h);
+    rect.setAttribute('width', wallsmb[i].w);
+    rect.setAttribute('fill', '#000');
+    document.getElementById('mb').appendChild(rect);
+  }
+}
+
+const wallsrb = [
+  { id: 1, x: 0, y: 0, w: 756, h: 108 },
+  { id: 2, x: 864, y: 0, w: 216, h: 108 },
+  { id: 3, x: 0, y: 108, w: 108, h: 324 },
+  { id: 4, x: 648, y: 108, w: 108, h: 432 },
+  { id: 5, x: 972, y: 108, w: 108, h: 864 },
+  { id: 6, x: 216, y: 216, w: 216, h: 108 },
+  { id: 7, x: 756, y: 216, w: 108, h: 324 },
+  { id: 8, x: 324, y: 324, w: 216, h: 108 },
+  { id: 9, x: 216, y: 432, w: 324, h: 108 },
+  { id: 10, x: 0, y: 540, w: 540, h: 108 },
+  { id: 11, x: 0, y: 648, w: 756, h: 108 },
+  { id: 12, x: 648, y: 756, w: 324, h: 108 },
+  { id: 13, x: 0, y: 864, w: 108, h: 108 },
+  { id: 14, x: 756, y: 864, w: 216, h: 108 },
+  { id: 15, x: 0, y: 972, w: 1080, h: 108 },
+];
+
+function drawWallsRb() {
+  for (i = 0; i < wallsrb.length; i++) {
+    var svgns = 'http://www.w3.org/2000/svg';
+    var rect = document.createElementNS(svgns, 'rect');
+
+    rect.setAttribute('id', wallsrb[i].id);
+    rect.setAttribute('x', wallsrb[i].x);
+    rect.setAttribute('y', wallsrb[i].y);
+    rect.setAttribute('height', wallsrb[i].h);
+    rect.setAttribute('width', wallsrb[i].w);
+    rect.setAttribute('fill', '#000');
+    document.getElementById('rb').appendChild(rect);
+  }
+}
+
+const wallsrm = [
+  { id: 1, x: 0, y: 0, w: 216, h: 108 },
+  { id: 2, x: 324, y: 0, w: 756, h: 108 },
+  { id: 3, x: 0, y: 108, w: 108, h: 540 },
+  { id: 4, x: 972, y: 108, w: 108, h: 864 },
+  { id: 5, x: 0, y: 756, w: 108, h: 216 },
+  { id: 6, x: 0, y: 972, w: 756, h: 108 },
+  { id: 7, x: 864, y: 972, w: 216, h: 108 },
+  // { id: 8, x: 324, y: 324, w: 216, h: 108 },
+  // { id: 9, x: 216, y: 432, w: 324, h: 108 },
+  // { id: 10, x: 0, y: 540, w: 540, h: 108 },
+  // { id: 11, x: 0, y: 648, w: 756, h: 108 },
+  // { id: 12, x: 648, y: 756, w: 324, h: 108 },
+  // { id: 13, x: 0, y: 864, w: 108, h: 108 },
+  // { id: 14, x: 756, y: 864, w: 216, h: 108 },
+  // { id: 15, x: 0, y: 972, w: 1080, h: 108 },
+];
+
+function drawWallsRm() {
+  for (i = 0; i < wallsrm.length; i++) {
+    var svgns = 'http://www.w3.org/2000/svg';
+    var rect = document.createElementNS(svgns, 'rect');
+
+    rect.setAttribute('id', wallsrm[i].id);
+    rect.setAttribute('x', wallsrm[i].x);
+    rect.setAttribute('y', wallsrm[i].y);
+    rect.setAttribute('height', wallsrm[i].h);
+    rect.setAttribute('width', wallsrm[i].w);
+    rect.setAttribute('fill', '#000');
+    document.getElementById('rm').appendChild(rect);
+  }
+}
+
+drawWallsLb();
+drawWallsMb();
+drawWallsRb();
+drawWallsRm();
+
 // ----- MAIN FUNCTION -----
 
 function main() {
   move();
+  // collision();
 
   // TILE Display
   switch (currtile) {
@@ -193,6 +330,8 @@ function main() {
       rm.style.display = 'none';
       mm.style.display = 'none';
       lm.style.display = 'none';
+
+      hitswitch = wallslb;
 
       break;
 
@@ -233,6 +372,8 @@ function main() {
       mm.style.display = 'none';
       lm.style.display = 'none';
 
+      hitswitch = wallsmb;
+
       break;
     case rb: // right bottom
       character = document.querySelector('#character-rb');
@@ -269,6 +410,8 @@ function main() {
       mm.style.display = 'none';
       lm.style.display = 'none';
 
+      hitswitch = wallsrb;
+
       break;
     case rm: // right middle
       character = document.querySelector('#character-rm');
@@ -284,6 +427,8 @@ function main() {
       rm.style.display = 'block';
       mm.style.display = 'none';
       lm.style.display = 'none';
+
+      hitswitch = wallsrm;
 
       break;
     case mm: // middle middle
@@ -325,7 +470,7 @@ function main() {
       break;
   }
 
-  console.log('X= ' + coord.x + ' Y= ' + coord.y);
+  // console.log('X= ' + coord.x + ' Y= ' + coord.y);
 
   // KEY COLLECTION
   // KEY ONE
@@ -529,37 +674,122 @@ function main() {
 // ----- MOVEMENT -----
 
 function move() {
+  for (i = 0; i < wallslb.length; i++) {
+    //// corners
+    /* // TL
+    var distTL = Math.sqrt(
+      Math.pow(wallslb[i].x - (coord.x + coord.r), 2) +
+        Math.pow(wallslb[i].y - (coord.y + coord.r), 2)
+    );
+    if (distTL <= coord.r) {
+      console.log('TL hit!' + distTL);
+    }
+    // BL
+    var distBL = Math.sqrt(
+      Math.pow(wallslb[i].x - (coord.x + coord.r), 2) +
+        Math.pow(wallslb[i].y + wallslb[i].h - (coord.y + coord.r), 2)
+    );
+    if (distBL <= coord.r) {
+      console.log('Bl hit!' + distTR);
+    }
+    // TR
+    var distTR = Math.sqrt(
+      Math.pow(wallslb[i].x + wallslb[i].w - (coord.x + coord.r), 2) +
+        Math.pow(wallslb[i].y - (coord.y + coord.r), 2)
+    );
+    if (distTR <= coord.r) {
+      console.log('TR hit!' + distBL);
+    }
+    // BR
+    var distBR = Math.sqrt(
+      Math.pow(wallslb[i].x + wallslb[i].w - (coord.x + 25), 2) +
+        Math.pow(wallslb[i].y + wallslb[i].h - (coord.y + 25), 2)
+    );
+    if (distBR <= coord.r) {
+      console.log('BR hit!' + distBR);
+    } */
+    // Walls
+    /* if (
+      coord.y + 50 > wallslb[i].y &&
+      coord.y < wallslb[i].y + wallslb[i].h &&
+      coord.x + 50 > wallslb[i].x &&
+      coord.x < wallslb[i].x + wallslb[i].w
+    ) {
+      console.log('wallhit!');
+    } */
+  }
+
+  // Switching hitbox array
+
+  // cycle through hitboxes
   if (Moves.up) {
+    coord.y -= speed;
+    for (i = 0; i < hitswitch.length; i++) {
+      if (
+        coord.y < hitswitch[i].y + hitswitch[i].h &&
+        coord.x < hitswitch[i].x + hitswitch[i].w &&
+        coord.y > hitswitch[i].y - 50 &&
+        coord.x > hitswitch[i].x - 50
+      ) {
+        coord.y = hitswitch[i].y + hitswitch[i].h;
+      }
+    }
     if (coord.y <= coordBound.miny) {
       coord.y = coordBound.miny;
-    } else {
-      coord.y -= 0.75 + speedUp;
     }
   }
 
   if (Moves.down) {
+    coord.y += speed;
+    for (i = 0; i < hitswitch.length; i++) {
+      if (
+        coord.y < hitswitch[i].y + hitswitch[i].h &&
+        coord.x < hitswitch[i].x + hitswitch[i].w &&
+        coord.y > hitswitch[i].y - 50 &&
+        coord.x > hitswitch[i].x - 50
+      ) {
+        coord.y = hitswitch[i].y - 50;
+      }
+    }
     if (coord.y >= coordBound.maxy) {
       coord.y = coordBound.maxy;
-    } else {
-      coord.y += 0.75 + speedUp;
     }
   }
 
   if (Moves.left) {
+    coord.x -= speed;
+    for (i = 0; i < hitswitch.length; i++) {
+      if (
+        coord.y < hitswitch[i].y + hitswitch[i].h &&
+        coord.x < hitswitch[i].x + hitswitch[i].w &&
+        coord.y > hitswitch[i].y - 50 &&
+        coord.x > hitswitch[i].x - 50
+      ) {
+        coord.x = hitswitch[i].x + hitswitch[i].w;
+      }
+    }
     if (coord.x <= coordBound.minx) {
       coord.x = coordBound.minx;
-    } else {
-      coord.x -= 0.75 + speedUp;
     }
   }
 
   if (Moves.right) {
+    coord.x += speed;
+    for (i = 0; i < hitswitch.length; i++) {
+      if (
+        coord.y < hitswitch[i].y + hitswitch[i].h &&
+        coord.x < hitswitch[i].x + hitswitch[i].w &&
+        coord.y > hitswitch[i].y - 50 &&
+        coord.x > hitswitch[i].x - 50
+      ) {
+        coord.x = hitswitch[i].x - 50;
+      }
+    }
     if (coord.x >= coordBound.maxx) {
       coord.x = coordBound.maxx;
-    } else {
-      coord.x += 0.75 + speedUp;
     }
   }
+  // console.log(currtile);
 }
 
 // ----- UPDATE -----
