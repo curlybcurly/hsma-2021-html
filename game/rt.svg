@@ -1,0 +1,84 @@
+<svg id="rt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <clipPath id="clip-path9">
+      <rect id="gatemask" width="108" height="108" transform="translate(1678 540)" fill="#fa0" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <rect id="Rechteck_1" data-name="Rechteck 1" width="1080" height="1080" fill="#c1c1c1"/>
+  <rect id="Rechteck_90" data-name="Rechteck 90" width="756" height="108" transform="translate(324 972)"/>
+  <rect id="Rechteck_126" data-name="Rechteck 126" width="756" height="108"/>
+  <rect id="Rechteck_91" data-name="Rechteck 91" width="216" height="108" transform="translate(0 972)"/>
+  <rect id="Rechteck_101" data-name="Rechteck 101" width="108" height="756" transform="translate(972 216)"/>
+  <rect id="Rechteck_102" data-name="Rechteck 102" width="108" height="756" transform="translate(0 216)"/>
+  <rect id="Rechteck_127" data-name="Rechteck 127" width="756" height="108" transform="translate(108 432)"/>
+  <rect id="Rechteck_129" data-name="Rechteck 129" width="540" height="108" transform="translate(216 648)"/>
+  <rect id="Rechteck_128" data-name="Rechteck 128" width="540" height="108" transform="translate(108 324)"/>
+  <rect id="Rechteck_136" data-name="Rechteck 136" width="108" height="324" transform="translate(864 324)"/>
+  <rect id="Rechteck_135" data-name="Rechteck 135" width="108" height="108" transform="translate(108 216)"/>
+  <rect id="Rechteck_133" data-name="Rechteck 133" width="540" height="108" transform="translate(324 756)"/>
+  <rect id="Rechteck_134" data-name="Rechteck 134" width="108" height="108" transform="translate(324 864)"/>
+  <g id="key6">
+    <circle id="key6-hit" cx="40" cy="40" r="40" transform="translate(446 878)" fill="none" opacity="0.82"/>
+    <g id="key6-symbol" transform="translate(461 893)" fill="none" stroke="#f0f" stroke-width="10">
+      <circle cx="25" cy="25" r="25" stroke="none"/>
+      <circle cx="25" cy="25" r="20" fill="none"/>
+    </g>
+  </g>
+  <g id="gate" transform="translate(-1678 -432)">
+    <g id="gatemaskgroup" clip-path="url(#clip-path9)">
+      <g id="gatebars">
+        <line id="Linie_1" data-name="Linie 1" y1="134" x2="134" transform="translate(1567.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-2" data-name="Linie 1" y1="134" x2="134" transform="translate(1582.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-3" data-name="Linie 1" y1="134" x2="134" transform="translate(1597.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-4" data-name="Linie 1" y1="134" x2="134" transform="translate(1612.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-5" data-name="Linie 1" y1="134" x2="134" transform="translate(1627.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-6" data-name="Linie 1" y1="134" x2="134" transform="translate(1642.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-7" data-name="Linie 1" y1="134" x2="134" transform="translate(1657.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-8" data-name="Linie 1" y1="134" x2="134" transform="translate(1672.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-9" data-name="Linie 1" y1="134" x2="134" transform="translate(1687.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-10" data-name="Linie 1" y1="134" x2="134" transform="translate(1702.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-11" data-name="Linie 1" y1="134" x2="134" transform="translate(1717.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-12" data-name="Linie 1" y1="134" x2="134" transform="translate(1732.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-13" data-name="Linie 1" y1="134" x2="134" transform="translate(1747.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-14" data-name="Linie 1" y1="134" x2="134" transform="translate(1762.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+      </g>
+    </g>
+    <g id="gateframe" transform="translate(1678 540)" fill="none" stroke="#000" stroke-width="5">
+      <rect width="108" height="108" stroke="none"/>
+      <rect x="2.5" y="2.5" width="103" height="103" fill="none"/>
+    </g>
+  </g>
+  <g id="gate-2" data-name="gate" transform="translate(-1462 432)">
+    <g id="gatemaskgroup-2" data-name="gatemaskgroup" clip-path="url(#clip-path9)">
+      <g id="gatebars-2" data-name="gatebars">
+        <line id="Linie_1-15" data-name="Linie 1" y1="134" x2="134" transform="translate(1567.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-16" data-name="Linie 1" y1="134" x2="134" transform="translate(1582.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-17" data-name="Linie 1" y1="134" x2="134" transform="translate(1597.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-18" data-name="Linie 1" y1="134" x2="134" transform="translate(1612.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-19" data-name="Linie 1" y1="134" x2="134" transform="translate(1627.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-20" data-name="Linie 1" y1="134" x2="134" transform="translate(1642.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-21" data-name="Linie 1" y1="134" x2="134" transform="translate(1657.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-22" data-name="Linie 1" y1="134" x2="134" transform="translate(1672.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-23" data-name="Linie 1" y1="134" x2="134" transform="translate(1687.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-24" data-name="Linie 1" y1="134" x2="134" transform="translate(1702.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-25" data-name="Linie 1" y1="134" x2="134" transform="translate(1717.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-26" data-name="Linie 1" y1="134" x2="134" transform="translate(1732.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-27" data-name="Linie 1" y1="134" x2="134" transform="translate(1747.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+        <line id="Linie_1-28" data-name="Linie 1" y1="134" x2="134" transform="translate(1762.5 527)" fill="none" stroke="#000" stroke-width="1"/>
+      </g>
+    </g>
+    <g id="gateframe-2" data-name="gateframe" transform="translate(1678 540)" fill="none" stroke="#000" stroke-width="5">
+      <rect width="108" height="108" stroke="none"/>
+      <rect x="2.5" y="2.5" width="103" height="103" fill="none"/>
+    </g>
+  </g>
+  <g id="key8-gate" transform="translate(25 137)" fill="none">
+    <path d="M29,0,58,50H0Z" stroke="none"/>
+    <path d="M 29 19.93150901794434 L 17.36027526855469 40 L 40.63972473144531 40 L 29 19.93150901794434 M 29 3.814697265625e-06 L 58 50 L 0 50 L 29 3.814697265625e-06 Z" stroke="none" fill="blue"/>
+  </g>
+  <g id="key5-gate" transform="translate(244 1001)" fill="none">
+    <path d="M26.5,0,53,19.1,42.878,50H10.122L0,19.1Z" stroke="none"/>
+    <path d="M 26.5 12.32637023925781 L 11.77961349487305 22.93521308898926 L 17.36931991577148 40 L 35.63068008422852 40 L 41.22038650512695 22.93521308898926 L 26.5 12.32637023925781 M 26.5 0 L 53 19.09830093383789 L 42.87789916992188 50 L 10.12210083007813 50 L 0 19.09830093383789 L 26.5 0 Z" stroke="none" fill="#90f"/>
+  </g>
+  <circle id="character-rt" cx="25" cy="25" r="25" transform="translate(490 137)"/>
+</svg>
