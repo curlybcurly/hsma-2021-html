@@ -2,12 +2,98 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'VT323', monospace;
 }
 
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+#text {
+  position: absolute;
+  color: white;
+  width: calc((0.75em + 1vmin) * 22);
+  height: calc((0.75em + 1vmin) * 13);
+  background-color: rgb(68, 68, 68);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: calc((0.75em + 1vmin) * 1.2);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.5) 0px 30px 60px -30px;
+  display: flex;
+  flex-direction: column;
+}
+#textagain {
+  position: absolute;
+  color: white;
+  width: calc((0.75em + 1vmin) * 22);
+  height: calc((0.75em + 1vmin) * 7);
+  background-color: rgb(68, 68, 68);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: calc((0.75em + 1vmin) * 1.2);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.5) 0px 30px 60px -30px;
+  display: flex;
+  flex-direction: column;
+}
+
+#text p {
+  font-size: calc((0.75em + 1vmin) * 1.5);
+}
+#textagain p {
+  font-size: calc((0.75em + 1vmin) * 1.5);
+}
+
+#text #play {
+  margin-top: calc((0.75em + 1vmin) * 0.375);
+  text-align: center;
+  font-size: calc((0.75em + 1vmin) * 5);
+  cursor: pointer;
+}
+#textagain #playagain {
+  margin-top: calc((0.75em + 1vmin) * 0.375);
+  text-align: center;
+  font-size: calc((0.75em + 1vmin) * 5);
+  cursor: pointer;
+}
+
+#text #play:hover {
+  margin-top: calc((0.75em + 1vmin) * 0.3);
+}
+#textagain #playagain:hover {
+  margin-top: calc((0.75em + 1vmin) * 0.3);
+}
+
+#play:hover #p1 {
+  color: rgb(0, 255, 0);
+}
+#play:hover #p2 {
+  color: rgb(255, 0, 0);
+}
+#play:hover #p3 {
+  color: rgb(255, 255, 0);
+}
+#play:hover #p4 {
+  color: rgb(0, 0, 255);
+}
+#playagain:hover #a1 {
+  color: rgb(0, 255, 0);
+}
+#playagain:hover #a2 {
+  color: rgb(255, 0, 0);
+}
+#playagain:hover #a3 {
+  color: rgb(255, 255, 0);
+}
+#playagain:hover #a4 {
+  color: rgb(0, 0, 255);
+}
+#playagain:hover #a5 {
+  color: rgb(255, 0, 255);
 }
 
 #lb,

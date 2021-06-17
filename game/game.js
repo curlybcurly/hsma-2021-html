@@ -2,12 +2,23 @@
 
 var hitswitch;
 
+var menu = 1;
+
 var Moves = {
   // KEY SWITCHES
   up: false,
   down: false,
   left: false,
   right: false,
+};
+
+// FINISH coords
+
+const finish = {
+  x: 972,
+  y: 0,
+  w: 324,
+  h: 108,
 };
 
 //SETUP GATES
@@ -581,9 +592,28 @@ drawWallsLt();
 drawWallsMt();
 drawWallsRt();
 
+function menuSwitch() {
+  document.querySelector('#text').style.display = 'none';
+  menu = 2;
+}
+function menuSwitch2() {
+  window.location.reload();
+}
+
+function fin() {
+  if (currtile == rt && coord.x > finish.x - 50 && coord.y < finish.h) {
+    document.querySelector('#textagain').style.display = 'block';
+    menu = 1;
+  }
+}
+
+document.querySelector('#play').addEventListener('click', menuSwitch);
+document.querySelector('#playagain').addEventListener('click', menuSwitch2);
+
 // ----- MAIN FUNCTION -----
 
 function main() {
+  fin();
   move();
   // collision();
 
@@ -1384,74 +1414,76 @@ function move() {
   // Switching hitbox array
 
   // cycle through hitboxes
-  if (Moves.up) {
-    coord.y -= speed;
-    for (i = 0; i < hitswitch.length; i++) {
-      if (
-        coord.y < hitswitch[i].y + hitswitch[i].h &&
-        coord.x < hitswitch[i].x + hitswitch[i].w &&
-        coord.y > hitswitch[i].y - 50 &&
-        coord.x > hitswitch[i].x - 50
-      ) {
-        coord.y = hitswitch[i].y + hitswitch[i].h;
+  if (menu == 2) {
+    if (Moves.up) {
+      coord.y -= speed;
+      for (i = 0; i < hitswitch.length; i++) {
+        if (
+          coord.y < hitswitch[i].y + hitswitch[i].h &&
+          coord.x < hitswitch[i].x + hitswitch[i].w &&
+          coord.y > hitswitch[i].y - 50 &&
+          coord.x > hitswitch[i].x - 50
+        ) {
+          coord.y = hitswitch[i].y + hitswitch[i].h;
+        }
+      }
+      if (coord.y <= coordBound.miny) {
+        coord.y = coordBound.miny;
       }
     }
-    if (coord.y <= coordBound.miny) {
-      coord.y = coordBound.miny;
-    }
-  }
 
-  if (Moves.down) {
-    coord.y += speed;
-    for (i = 0; i < hitswitch.length; i++) {
-      if (
-        coord.y < hitswitch[i].y + hitswitch[i].h &&
-        coord.x < hitswitch[i].x + hitswitch[i].w &&
-        coord.y > hitswitch[i].y - 50 &&
-        coord.x > hitswitch[i].x - 50
-      ) {
-        coord.y = hitswitch[i].y - 50;
+    if (Moves.down) {
+      coord.y += speed;
+      for (i = 0; i < hitswitch.length; i++) {
+        if (
+          coord.y < hitswitch[i].y + hitswitch[i].h &&
+          coord.x < hitswitch[i].x + hitswitch[i].w &&
+          coord.y > hitswitch[i].y - 50 &&
+          coord.x > hitswitch[i].x - 50
+        ) {
+          coord.y = hitswitch[i].y - 50;
+        }
+      }
+      if (coord.y >= coordBound.maxy) {
+        coord.y = coordBound.maxy;
       }
     }
-    if (coord.y >= coordBound.maxy) {
-      coord.y = coordBound.maxy;
-    }
-  }
 
-  if (Moves.left) {
-    coord.x -= speed;
-    for (i = 0; i < hitswitch.length; i++) {
-      if (
-        coord.y < hitswitch[i].y + hitswitch[i].h &&
-        coord.x < hitswitch[i].x + hitswitch[i].w &&
-        coord.y > hitswitch[i].y - 50 &&
-        coord.x > hitswitch[i].x - 50
-      ) {
-        coord.x = hitswitch[i].x + hitswitch[i].w;
+    if (Moves.left) {
+      coord.x -= speed;
+      for (i = 0; i < hitswitch.length; i++) {
+        if (
+          coord.y < hitswitch[i].y + hitswitch[i].h &&
+          coord.x < hitswitch[i].x + hitswitch[i].w &&
+          coord.y > hitswitch[i].y - 50 &&
+          coord.x > hitswitch[i].x - 50
+        ) {
+          coord.x = hitswitch[i].x + hitswitch[i].w;
+        }
+      }
+      if (coord.x <= coordBound.minx) {
+        coord.x = coordBound.minx;
       }
     }
-    if (coord.x <= coordBound.minx) {
-      coord.x = coordBound.minx;
-    }
-  }
 
-  if (Moves.right) {
-    coord.x += speed;
-    for (i = 0; i < hitswitch.length; i++) {
-      if (
-        coord.y < hitswitch[i].y + hitswitch[i].h &&
-        coord.x < hitswitch[i].x + hitswitch[i].w &&
-        coord.y > hitswitch[i].y - 50 &&
-        coord.x > hitswitch[i].x - 50
-      ) {
-        coord.x = hitswitch[i].x - 50;
+    if (Moves.right) {
+      coord.x += speed;
+      for (i = 0; i < hitswitch.length; i++) {
+        if (
+          coord.y < hitswitch[i].y + hitswitch[i].h &&
+          coord.x < hitswitch[i].x + hitswitch[i].w &&
+          coord.y > hitswitch[i].y - 50 &&
+          coord.x > hitswitch[i].x - 50
+        ) {
+          coord.x = hitswitch[i].x - 50;
+        }
+      }
+      if (coord.x >= coordBound.maxx) {
+        coord.x = coordBound.maxx;
       }
     }
-    if (coord.x >= coordBound.maxx) {
-      coord.x = coordBound.maxx;
-    }
+    // console.log(currtile);
   }
-  // console.log(currtile);
 }
 
 // ----- UPDATE -----
