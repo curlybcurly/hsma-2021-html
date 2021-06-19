@@ -4,16 +4,15 @@ var hitswitch;
 
 var menu = 1;
 
+// key switches
 var Moves = {
-  // KEY SWITCHES
   up: false,
   down: false,
   left: false,
   right: false,
 };
 
-// FINISH coords
-
+// finish coords
 const finish = {
   x: 972,
   y: 0,
@@ -21,8 +20,7 @@ const finish = {
   h: 108,
 };
 
-//SETUP GATES
-
+//gates setup
 const lbgate1 = {
   x: 1001,
   y: 569,
@@ -107,7 +105,6 @@ const rbgate6 = {
   hopfrom: 819,
   hopto: 755,
 };
-
 const lmgate7 = {
   x: 677,
   y: 29,
@@ -115,7 +112,6 @@ const lmgate7 = {
   hopfrom: 711,
   hopto: 647,
 };
-
 const ltgate7 = {
   x: 677,
   y: 1001,
@@ -123,7 +119,6 @@ const ltgate7 = {
   hopfrom: 711,
   hopto: 647,
 };
-
 const ltgate8 = {
   x: 1001,
   y: 569,
@@ -131,7 +126,6 @@ const ltgate8 = {
   hopfrom: 603,
   hopto: 539,
 };
-
 const mtgate8 = {
   x: 29,
   y: 569,
@@ -146,7 +140,6 @@ const rtgate9 = {
   hopfrom: 324,
   hopto: 215,
 };
-
 const rmgate9 = {
   x: 245,
   y: 29,
@@ -154,7 +147,6 @@ const rmgate9 = {
   hopfrom: 324,
   hopto: 215,
 };
-
 const rmgate10 = {
   x: 29,
   y: 677,
@@ -183,7 +175,6 @@ const mtgate10 = {
   hopfrom: 755,
   hopto: 647,
 };
-
 const lmgate11 = {
   x: 353,
   y: 1001,
@@ -191,7 +182,6 @@ const lmgate11 = {
   hopfrom: 432,
   hopto: 323,
 };
-
 const lbgate11 = {
   x: 353,
   y: 29,
@@ -199,7 +189,6 @@ const lbgate11 = {
   hopfrom: 432,
   hopto: 323,
 };
-
 const mtgate12 = {
   x: 1001,
   y: 137,
@@ -207,7 +196,6 @@ const mtgate12 = {
   hopfrom: 216,
   hopto: 107,
 };
-
 const rtgate12 = {
   x: 29,
   y: 137,
@@ -216,11 +204,10 @@ const rtgate12 = {
   hopto: 107,
 };
 
-// TILE UPDATE
+// init currtile
 var currtile = lb;
-var prevtile = lb;
 
-// KEYS UPDATE
+// keys update
 var Key = {
   one: false,
   two: false,
@@ -232,7 +219,7 @@ var Key = {
   eight: false,
 };
 
-// KEY POSITIONS
+// keys position
 var keyOne = { x: 230, y: 554, r: 40 };
 var keyTwo = { x: 122, y: 122, r: 40 };
 var keyThree = { x: 122, y: 554, r: 40 };
@@ -242,14 +229,14 @@ var keySix = { x: 446, y: 878, r: 40 };
 var keySeven = { x: 770, y: 338, r: 40 };
 var keyEight = { x: 122, y: 230, r: 40 };
 
-// CHARACTER POSITION
+// character coord
 var coord = {
   x: 29,
   y: 1001,
   r: 25,
 };
 
-// TILE BORDERS
+// world borders
 const coordBound = {
   minx: 00,
   maxx: 1030,
@@ -257,16 +244,13 @@ const coordBound = {
   maxy: 1030,
 };
 
-// ACCELERATION SETUP
-var speed = 3;
-var speedUp = 0;
-const max = 1.5;
+// speed setup
+var speed = 8;
 
-// CHARACTER SETUP
+// character setup
 let character;
 
 // ----- KEY DETECTION -----
-
 window.onkeydown = function (e) {
   e.preventDefault();
   var key = e.keyCode;
@@ -276,7 +260,6 @@ window.onkeydown = function (e) {
   if (key === 39) Moves.right = true;
   if (key === 40) Moves.down = true;
 };
-
 window.onkeyup = function (e) {
   e.preventDefault();
   var key = e.keyCode;
@@ -284,10 +267,10 @@ window.onkeyup = function (e) {
   if (key === 38) Moves.up = false;
   if (key === 39) Moves.right = false;
   if (key === 40) Moves.down = false;
-  else speedUp = 0;
 };
 
-// ----- SVG Walls STUFF -----^
+// ----- DRAW WALLS -----
+
 const wallslb = [
   { id: 1, x: 0, y: 0, w: 324, h: 108 },
   { id: 2, x: 432, y: 0, w: 648, h: 108 },
@@ -306,12 +289,10 @@ const wallslb = [
   { id: 15, x: 432, y: 864, w: 648, h: 108 },
   { id: 16, x: 324, y: 972, w: 756, h: 108 },
 ];
-
 function drawWallsLb() {
   for (i = 0; i < wallslb.length; i++) {
     var svgns = 'http://www.w3.org/2000/svg';
     var rect = document.createElementNS(svgns, 'rect');
-
     rect.setAttribute('id', wallslb[i].id);
     rect.setAttribute('x', wallslb[i].x);
     rect.setAttribute('y', wallslb[i].y);
@@ -344,12 +325,10 @@ const wallsmb = [
   { id: 16, x: 648, y: 864, w: 432, h: 108 },
   { id: 16, x: 0, y: 972, w: 1080, h: 108 },
 ];
-
 function drawWallsMb() {
   for (i = 0; i < wallsmb.length; i++) {
     var svgns = 'http://www.w3.org/2000/svg';
     var rect = document.createElementNS(svgns, 'rect');
-
     rect.setAttribute('id', wallsmb[i].id);
     rect.setAttribute('x', wallsmb[i].x);
     rect.setAttribute('y', wallsmb[i].y);
@@ -377,12 +356,10 @@ const wallsrb = [
   { id: 14, x: 756, y: 864, w: 216, h: 108 },
   { id: 15, x: 0, y: 972, w: 1080, h: 108 },
 ];
-
 function drawWallsRb() {
   for (i = 0; i < wallsrb.length; i++) {
     var svgns = 'http://www.w3.org/2000/svg';
     var rect = document.createElementNS(svgns, 'rect');
-
     rect.setAttribute('id', wallsrb[i].id);
     rect.setAttribute('x', wallsrb[i].x);
     rect.setAttribute('y', wallsrb[i].y);
@@ -402,12 +379,10 @@ const wallsrm = [
   { id: 6, x: 0, y: 972, w: 756, h: 108 },
   { id: 7, x: 864, y: 972, w: 216, h: 108 },
 ];
-
 function drawWallsRm() {
   for (i = 0; i < wallsrm.length; i++) {
     var svgns = 'http://www.w3.org/2000/svg';
     var rect = document.createElementNS(svgns, 'rect');
-
     rect.setAttribute('id', wallsrm[i].id);
     rect.setAttribute('x', wallsrm[i].x);
     rect.setAttribute('y', wallsrm[i].y);
@@ -438,12 +413,10 @@ const wallsmm = [
   { id: 15, x: 0, y: 972, w: 648, h: 108 },
   { id: 15, x: 756, y: 972, w: 324, h: 108 },
 ];
-
 function drawWallsMm() {
   for (i = 0; i < wallsmm.length; i++) {
     var svgns = 'http://www.w3.org/2000/svg';
     var rect = document.createElementNS(svgns, 'rect');
-
     rect.setAttribute('id', wallsmm[i].id);
     rect.setAttribute('x', wallsmm[i].x);
     rect.setAttribute('y', wallsmm[i].y);
@@ -475,12 +448,10 @@ const wallslm = [
   { id: 18, x: 0, y: 972, w: 324, h: 108 },
   { id: 19, x: 432, y: 972, w: 648, h: 108 },
 ];
-
 function drawWallsLm() {
   for (i = 0; i < wallslm.length; i++) {
     var svgns = 'http://www.w3.org/2000/svg';
     var rect = document.createElementNS(svgns, 'rect');
-
     rect.setAttribute('id', wallslm[i].id);
     rect.setAttribute('x', wallslm[i].x);
     rect.setAttribute('y', wallslm[i].y);
@@ -512,12 +483,10 @@ const wallslt = [
   { id: 18, x: 0, y: 972, w: 648, h: 108 },
   { id: 19, x: 756, y: 972, w: 324, h: 108 },
 ];
-
 function drawWallsLt() {
   for (i = 0; i < wallslt.length; i++) {
     var svgns = 'http://www.w3.org/2000/svg';
     var rect = document.createElementNS(svgns, 'rect');
-
     rect.setAttribute('id', wallslt[i].id);
     rect.setAttribute('x', wallslt[i].x);
     rect.setAttribute('y', wallslt[i].y);
@@ -536,12 +505,10 @@ const wallsmt = [
   { id: 5, x: 0, y: 972, w: 648, h: 108 },
   { id: 5, x: 756, y: 972, w: 324, h: 108 },
 ];
-
 function drawWallsMt() {
   for (i = 0; i < wallsmt.length; i++) {
     var svgns = 'http://www.w3.org/2000/svg';
     var rect = document.createElementNS(svgns, 'rect');
-
     rect.setAttribute('id', wallsmt[i].id);
     rect.setAttribute('x', wallsmt[i].x);
     rect.setAttribute('y', wallsmt[i].y);
@@ -566,12 +533,10 @@ const wallsrt = [
   { id: 5, x: 0, y: 972, w: 216, h: 108 },
   { id: 5, x: 324, y: 972, w: 756, h: 108 },
 ];
-
 function drawWallsRt() {
   for (i = 0; i < wallsrt.length; i++) {
     var svgns = 'http://www.w3.org/2000/svg';
     var rect = document.createElementNS(svgns, 'rect');
-
     rect.setAttribute('id', wallsrt[i].id);
     rect.setAttribute('x', wallsrt[i].x);
     rect.setAttribute('y', wallsrt[i].y);
@@ -599,14 +564,12 @@ function menuSwitch() {
 function menuSwitch2() {
   window.location.reload();
 }
-
 function fin() {
   if (currtile == rt && coord.x > finish.x - 50 && coord.y < finish.h) {
     document.querySelector('#textagain').style.display = 'block';
     menu = 1;
   }
 }
-
 document.querySelector('#play').addEventListener('click', menuSwitch);
 document.querySelector('#playagain').addEventListener('click', menuSwitch2);
 
@@ -615,7 +578,6 @@ document.querySelector('#playagain').addEventListener('click', menuSwitch2);
 function main() {
   fin();
   move();
-  // collision();
 
   // TILE DISPLAY & GATE SPAWN
   switch (currtile) {
@@ -679,12 +641,7 @@ function main() {
       lb.style.display = 'none';
       mb.style.display = 'block';
       rb.style.display = 'none';
-      rm.style.display = 'none';
       mm.style.display = 'none';
-      lm.style.display = 'none';
-      lt.style.display = 'none';
-      mt.style.display = 'none';
-      rt.style.display = 'none';
 
       hitswitch = wallsmb;
 
@@ -717,15 +674,9 @@ function main() {
         coord.y = rbgate6.y;
       }
 
-      lb.style.display = 'none';
       mb.style.display = 'none';
       rb.style.display = 'block';
       rm.style.display = 'none';
-      mm.style.display = 'none';
-      lm.style.display = 'none';
-      lt.style.display = 'none';
-      mt.style.display = 'none';
-      rt.style.display = 'none';
 
       hitswitch = wallsrb;
 
@@ -747,14 +698,9 @@ function main() {
         coord.y = rmgate10.y;
       }
 
-      lb.style.display = 'none';
-      mb.style.display = 'none';
       rb.style.display = 'none';
       rm.style.display = 'block';
       mm.style.display = 'none';
-      lm.style.display = 'none';
-      lt.style.display = 'none';
-      mt.style.display = 'none';
       rt.style.display = 'none';
 
       hitswitch = wallsrm;
@@ -783,15 +729,11 @@ function main() {
         coord.y = mmgate10b.y;
       }
 
-      lb.style.display = 'none';
       mb.style.display = 'none';
-      rb.style.display = 'none';
       rm.style.display = 'none';
       mm.style.display = 'block';
       lm.style.display = 'none';
-      lt.style.display = 'none';
       mt.style.display = 'none';
-      rt.style.display = 'none';
 
       hitswitch = wallsmm;
 
@@ -815,14 +757,9 @@ function main() {
       }
 
       lb.style.display = 'none';
-      mb.style.display = 'none';
-      rb.style.display = 'none';
-      rm.style.display = 'none';
       mm.style.display = 'none';
       lm.style.display = 'block';
       lt.style.display = 'none';
-      mt.style.display = 'none';
-      rt.style.display = 'none';
 
       hitswitch = wallslm;
 
@@ -841,15 +778,9 @@ function main() {
         coord.y = ltgate8.y;
       }
 
-      lb.style.display = 'none';
-      mb.style.display = 'none';
-      rb.style.display = 'none';
-      rm.style.display = 'none';
-      mm.style.display = 'none';
       lm.style.display = 'none';
       lt.style.display = 'block';
       mt.style.display = 'none';
-      rt.style.display = 'none';
 
       hitswitch = wallslt;
 
@@ -873,12 +804,7 @@ function main() {
         coord.y = mtgate12.y;
       }
 
-      lb.style.display = 'none';
-      mb.style.display = 'none';
-      rb.style.display = 'none';
-      rm.style.display = 'none';
       mm.style.display = 'none';
-      lm.style.display = 'none';
       lt.style.display = 'none';
       mt.style.display = 'block';
       rt.style.display = 'none';
@@ -900,13 +826,7 @@ function main() {
         coord.y = rtgate12.y;
       }
 
-      lb.style.display = 'none';
-      mb.style.display = 'none';
-      rb.style.display = 'none';
       rm.style.display = 'none';
-      mm.style.display = 'none';
-      lm.style.display = 'none';
-      lt.style.display = 'none';
       mt.style.display = 'none';
       rt.style.display = 'block';
 
@@ -915,20 +835,16 @@ function main() {
       break;
   }
 
-  // console.log('X= ' + coord.x + ' Y= ' + coord.y);
-
   // KEY COLLECTION
   // KEY ONE
   var dx = coord.x - keyOne.x;
   var dy = coord.y - keyOne.y;
   var distance = Math.sqrt(dx * dx + dy * dy);
-
   if (Key.one === false && distance < coord.r + keyOne.r && currtile == lb) {
     document.querySelector('#key1-symbol').remove();
     document.querySelector('#key1-gate').remove();
     Key.one = true;
   }
-
   if (Key.one == true) {
     if (document.querySelector('#key1-gate'))
       document.querySelector('#key1-gate').remove();
@@ -938,7 +854,6 @@ function main() {
   var dx = coord.x - keyTwo.x;
   var dy = coord.y - keyTwo.y;
   var distance = Math.sqrt(dx * dx + dy * dy);
-
   if (Key.two === false && distance < coord.r + keyTwo.r && currtile == rm) {
     if (distance < coord.r + keyTwo.r) {
       document.querySelector('#key2-symbol').remove();
@@ -946,7 +861,6 @@ function main() {
       Key.two = true;
     }
   }
-
   if (Key.two == true) {
     if (document.querySelector('#key2-gate'))
       document.querySelector('#key2-gate').remove();
@@ -956,7 +870,6 @@ function main() {
   var dx = coord.x - keyThree.x;
   var dy = coord.y - keyThree.y;
   var distance = Math.sqrt(dx * dx + dy * dy);
-
   if (
     Key.three === false &&
     distance < coord.r + keyThree.r &&
@@ -968,7 +881,6 @@ function main() {
       Key.three = true;
     }
   }
-
   if (Key.three == true) {
     if (document.querySelector('#key3-gate'))
       document.querySelector('#key3-gate').remove();
@@ -978,7 +890,6 @@ function main() {
   var dx = coord.x - keyFour.x;
   var dy = coord.y - keyFour.y;
   var distance = Math.sqrt(dx * dx + dy * dy);
-
   if (Key.four === false && distance < coord.r + keyFour.r && currtile == rb) {
     if (distance < coord.r + keyFour.r) {
       document.querySelector('#key4-symbol').remove();
@@ -986,7 +897,6 @@ function main() {
       Key.four = true;
     }
   }
-
   if (Key.four == true) {
     if (document.querySelector('#key4-gate'))
       document.querySelector('#key4-gate').remove();
@@ -996,7 +906,6 @@ function main() {
   var dx = coord.x - keyFive.x;
   var dy = coord.y - keyFive.y;
   var distance = Math.sqrt(dx * dx + dy * dy);
-
   if (Key.five === false && distance < coord.r + keyFive.r && currtile == mt) {
     if (distance < coord.r + keyFive.r) {
       document.querySelector('#key5-symbol').remove();
@@ -1004,7 +913,6 @@ function main() {
       Key.five = true;
     }
   }
-
   if (Key.five == true) {
     if (document.querySelector('#key5-gate'))
       document.querySelector('#key5-gate').remove();
@@ -1014,7 +922,6 @@ function main() {
   var dx = coord.x - keySix.x;
   var dy = coord.y - keySix.y;
   var distance = Math.sqrt(dx * dx + dy * dy);
-
   if (Key.six === false && distance < coord.r + keySix.r && currtile == rt) {
     if (distance < coord.r + keySix.r) {
       document.querySelector('#key6-symbol').remove();
@@ -1022,7 +929,6 @@ function main() {
       Key.six = true;
     }
   }
-
   if (Key.six == true) {
     if (document.querySelector('#key6-gate'))
       document.querySelector('#key6-gate').remove();
@@ -1032,7 +938,6 @@ function main() {
   var dx = coord.x - keySeven.x;
   var dy = coord.y - keySeven.y;
   var distance = Math.sqrt(dx * dx + dy * dy);
-
   if (
     Key.seven === false &&
     distance < coord.r + keySeven.r &&
@@ -1044,7 +949,6 @@ function main() {
       Key.seven = true;
     }
   }
-
   if (Key.seven == true) {
     if (document.querySelector('#key7-gate'))
       document.querySelector('#key7-gate').remove();
@@ -1054,7 +958,6 @@ function main() {
   var dx = coord.x - keyEight.x;
   var dy = coord.y - keyEight.y;
   var distance = Math.sqrt(dx * dx + dy * dy);
-
   if (
     Key.eight === false &&
     distance < coord.r + keyEight.r &&
@@ -1066,17 +969,24 @@ function main() {
       Key.eight = true;
     }
   }
-
   if (Key.eight == true) {
     if (document.querySelector('#key8-gate'))
       document.querySelector('#key8-gate').remove();
   }
 
-  // CHARACTER POSITION UPDATE
-  character.setAttribute(
-    'transform',
-    'translate(' + coord.x + ' ' + coord.y + ')'
-  );
+  // CHARACTER POSITION UPDATE & LIGHT
+  if (
+    Moves.left == true ||
+    Moves.up == true ||
+    Moves.right == true ||
+    Moves.down == true
+  ) {
+    character.setAttribute(
+      'transform',
+      'translate(' + coord.x + ' ' + coord.y + ')'
+    );
+    console.log('X = ' + coord.x + ', Y = ' + coord.y);
+  }
   var g1 = document.querySelector('#MyGradient');
   var g2 = document.querySelector('#MyGradient2');
   var g3 = document.querySelector('#MyGradient3');
@@ -1105,9 +1015,7 @@ function main() {
   g9.setAttribute('cx', coord.x + 25);
   g9.setAttribute('cy', coord.y + 25);
 
-  console.log('X = ' + coord.x + ', Y = ' + coord.y);
-
-  // GATES
+  // GATES LOGIC
   if (
     // from LB to MB
     currtile == lb &&
@@ -1351,68 +1259,12 @@ function main() {
     currtile = mt;
     // window.alert('hm');
   }
-
-  // CHARACTER ACCELERATION
-  if (Moves.left || Moves.right || Moves.down || Moves.up === true) {
-    speedUp = speedUp + 0.03;
-    if (speedUp > max) {
-      speedUp = max;
-    }
-  } else speedUp === 0;
-
-  // console.log(currtile);
 }
 
 // ----- MOVEMENT -----
 
 function move() {
-  for (i = 0; i < wallslb.length; i++) {
-    //// corners
-    /* // TL
-    var distTL = Math.sqrt(
-      Math.pow(wallslb[i].x - (coord.x + coord.r), 2) +
-        Math.pow(wallslb[i].y - (coord.y + coord.r), 2)
-    );
-    if (distTL <= coord.r) {
-      console.log('TL hit!' + distTL);
-    }
-    // BL
-    var distBL = Math.sqrt(
-      Math.pow(wallslb[i].x - (coord.x + coord.r), 2) +
-        Math.pow(wallslb[i].y + wallslb[i].h - (coord.y + coord.r), 2)
-    );
-    if (distBL <= coord.r) {
-      console.log('Bl hit!' + distTR);
-    }
-    // TR
-    var distTR = Math.sqrt(
-      Math.pow(wallslb[i].x + wallslb[i].w - (coord.x + coord.r), 2) +
-        Math.pow(wallslb[i].y - (coord.y + coord.r), 2)
-    );
-    if (distTR <= coord.r) {
-      console.log('TR hit!' + distBL);
-    }
-    // BR
-    var distBR = Math.sqrt(
-      Math.pow(wallslb[i].x + wallslb[i].w - (coord.x + 25), 2) +
-        Math.pow(wallslb[i].y + wallslb[i].h - (coord.y + 25), 2)
-    );
-    if (distBR <= coord.r) {
-      console.log('BR hit!' + distBR);
-    } */
-    // Walls
-    /* if (
-      coord.y + 50 > wallslb[i].y &&
-      coord.y < wallslb[i].y + wallslb[i].h &&
-      coord.x + 50 > wallslb[i].x &&
-      coord.x < wallslb[i].x + wallslb[i].w
-    ) {
-      console.log('wallhit!');
-    } */
-  }
-
   // Switching hitbox array
-
   // cycle through hitboxes
   if (menu == 2) {
     if (Moves.up) {
@@ -1482,10 +1334,10 @@ function move() {
         coord.x = coordBound.maxx;
       }
     }
-    // console.log(currtile);
   }
+  window.requestAnimationFrame(main);
 }
 
 // ----- UPDATE -----
 
-setInterval(main, 5);
+window.requestAnimationFrame(main);
