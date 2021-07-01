@@ -1,8 +1,13 @@
 // ----- VARS -----
 
+// init currtile
+var currtile = lb;
+
 var hitswitch;
 
 var menu = 1;
+
+var lightNoise = 15;
 
 // key switches
 var Moves = {
@@ -203,9 +208,6 @@ const rtgate12 = {
   hopfrom: 216,
   hopto: 107,
 };
-
-// init currtile
-var currtile = lb;
 
 // keys update
 var Key = {
@@ -479,7 +481,7 @@ const wallslt = [
   { id: 14, x: 972, y: 756, w: 108, h: 108 },
   { id: 15, x: 0, y: 864, w: 216, h: 108 },
   { id: 16, x: 432, y: 864, w: 216, h: 108 },
-  { id: 17, x: 865, y: 864, w: 216, h: 108 },
+  { id: 17, x: 864, y: 864, w: 216, h: 108 },
   { id: 18, x: 0, y: 972, w: 648, h: 108 },
   { id: 19, x: 756, y: 972, w: 324, h: 108 },
 ];
@@ -987,6 +989,179 @@ function main() {
     );
     console.log('X = ' + coord.x + ', Y = ' + coord.y);
   }
+  if (currtile == lb) {
+    if (
+      (Moves.left == false &&
+        Moves.up == false &&
+        Moves.right == false &&
+        Moves.down == false) ||
+      (Moves.up == true && Moves.right == false && Moves.left == false) ||
+      (Moves.down == true && Moves.right == false && Moves.left == false)
+    ) {
+      character.setAttribute('fill', 'url(#cc0)');
+    }
+    if (Moves.left == true) {
+      character.setAttribute('fill', 'url(#cl2)');
+    }
+    if (Moves.right == true) {
+      character.setAttribute('fill', 'url(#cr1)');
+    }
+  }
+  if (currtile == mb) {
+    if (
+      (Moves.left == false &&
+        Moves.up == false &&
+        Moves.right == false &&
+        Moves.down == false) ||
+      (Moves.up == true && Moves.right == false && Moves.left == false) ||
+      (Moves.down == true && Moves.right == false && Moves.left == false)
+    ) {
+      character.setAttribute('fill', 'url(#cc0mb)');
+    }
+    if (Moves.left == true) {
+      character.setAttribute('fill', 'url(#cl2mb)');
+    }
+    if (Moves.right == true) {
+      character.setAttribute('fill', 'url(#cr1mb)');
+    }
+  }
+  if (currtile == rb) {
+    if (
+      (Moves.left == false &&
+        Moves.up == false &&
+        Moves.right == false &&
+        Moves.down == false) ||
+      (Moves.up == true && Moves.right == false && Moves.left == false) ||
+      (Moves.down == true && Moves.right == false && Moves.left == false)
+    ) {
+      character.setAttribute('fill', 'url(#cc0rb)');
+    }
+    if (Moves.left == true) {
+      character.setAttribute('fill', 'url(#cl2rb)');
+    }
+    if (Moves.right == true) {
+      character.setAttribute('fill', 'url(#cr1rb)');
+    }
+  }
+  if (currtile == rm) {
+    if (
+      (Moves.left == false &&
+        Moves.up == false &&
+        Moves.right == false &&
+        Moves.down == false) ||
+      (Moves.up == true && Moves.right == false && Moves.left == false) ||
+      (Moves.down == true && Moves.right == false && Moves.left == false)
+    ) {
+      character.setAttribute('fill', 'url(#cc0rm)');
+    }
+    if (Moves.left == true) {
+      character.setAttribute('fill', 'url(#cl2rm)');
+    }
+    if (Moves.right == true) {
+      character.setAttribute('fill', 'url(#cr1rm)');
+    }
+  }
+  if (currtile == mm) {
+    if (
+      (Moves.left == false &&
+        Moves.up == false &&
+        Moves.right == false &&
+        Moves.down == false) ||
+      (Moves.up == true && Moves.right == false && Moves.left == false) ||
+      (Moves.down == true && Moves.right == false && Moves.left == false)
+    ) {
+      character.setAttribute('fill', 'url(#cc0mm)');
+    }
+    if (Moves.left == true) {
+      character.setAttribute('fill', 'url(#cl2mm)');
+    }
+    if (Moves.right == true) {
+      character.setAttribute('fill', 'url(#cr1mm)');
+    }
+  }
+  if (currtile == lm) {
+    if (
+      (Moves.left == false &&
+        Moves.up == false &&
+        Moves.right == false &&
+        Moves.down == false) ||
+      (Moves.up == true && Moves.right == false && Moves.left == false) ||
+      (Moves.down == true && Moves.right == false && Moves.left == false)
+    ) {
+      character.setAttribute('fill', 'url(#cc0lm)');
+    }
+    if (Moves.left == true) {
+      character.setAttribute('fill', 'url(#cl2lm)');
+    }
+    if (Moves.right == true) {
+      character.setAttribute('fill', 'url(#cr1lm)');
+    }
+  }
+  if (currtile == lt) {
+    if (
+      (Moves.left == false &&
+        Moves.up == false &&
+        Moves.right == false &&
+        Moves.down == false) ||
+      (Moves.up == true && Moves.right == false && Moves.left == false) ||
+      (Moves.down == true && Moves.right == false && Moves.left == false)
+    ) {
+      character.setAttribute('fill', 'url(#cc0lt)');
+    }
+    if (Moves.left == true) {
+      character.setAttribute('fill', 'url(#cl2lt)');
+    }
+    if (Moves.right == true) {
+      character.setAttribute('fill', 'url(#cr1lt)');
+    }
+  }
+  if (currtile == mt) {
+    if (
+      (Moves.left == false &&
+        Moves.up == false &&
+        Moves.right == false &&
+        Moves.down == false) ||
+      (Moves.up == true && Moves.right == false && Moves.left == false) ||
+      (Moves.down == true && Moves.right == false && Moves.left == false)
+    ) {
+      character.setAttribute('fill', 'url(#cc0mt)');
+    }
+    if (Moves.left == true) {
+      character.setAttribute('fill', 'url(#cl2mt)');
+    }
+    if (Moves.right == true) {
+      character.setAttribute('fill', 'url(#cr1mt)');
+    }
+  }
+  if (currtile == rt) {
+    if (
+      (Moves.left == false &&
+        Moves.up == false &&
+        Moves.right == false &&
+        Moves.down == false) ||
+      (Moves.up == true && Moves.right == false && Moves.left == false) ||
+      (Moves.down == true && Moves.right == false && Moves.left == false)
+    ) {
+      character.setAttribute('fill', 'url(#cc0rt)');
+    }
+    if (Moves.left == true) {
+      character.setAttribute('fill', 'url(#cl2rt)');
+    }
+    if (Moves.right == true) {
+      character.setAttribute('fill', 'url(#cr1rt)');
+    }
+  }
+
+  if (lightNoise >= 30) {
+    lightNoise -= Math.random();
+  }
+  if (lightNoise <= 0) {
+    lightNoise += Math.random();
+  }
+  if (0 < lightNoise < 30) {
+    lightNoise += Math.random();
+    lightNoise -= Math.random();
+  }
   var g1 = document.querySelector('#MyGradient');
   var g2 = document.querySelector('#MyGradient2');
   var g3 = document.querySelector('#MyGradient3');
@@ -998,22 +1173,31 @@ function main() {
   var g9 = document.querySelector('#MyGradient9');
   g1.setAttribute('cx', coord.x + 25);
   g1.setAttribute('cy', coord.y + 25);
+  g1.setAttribute('r', lightNoise * 2 + 500);
   g2.setAttribute('cx', coord.x + 25);
   g2.setAttribute('cy', coord.y + 25);
+  g2.setAttribute('r', lightNoise * 2 + 500);
   g3.setAttribute('cx', coord.x + 25);
   g3.setAttribute('cy', coord.y + 25);
+  g3.setAttribute('r', lightNoise * 2 + 500);
   g4.setAttribute('cx', coord.x + 25);
   g4.setAttribute('cy', coord.y + 25);
+  g4.setAttribute('r', lightNoise * 2 + 500);
   g5.setAttribute('cx', coord.x + 25);
   g5.setAttribute('cy', coord.y + 25);
+  g5.setAttribute('r', lightNoise * 2 + 500);
   g6.setAttribute('cx', coord.x + 25);
   g6.setAttribute('cy', coord.y + 25);
+  g6.setAttribute('r', lightNoise * 2 + 500);
   g7.setAttribute('cx', coord.x + 25);
   g7.setAttribute('cy', coord.y + 25);
+  g7.setAttribute('r', lightNoise * 2 + 500);
   g8.setAttribute('cx', coord.x + 25);
   g8.setAttribute('cy', coord.y + 25);
+  g8.setAttribute('r', lightNoise * 2 + 500);
   g9.setAttribute('cx', coord.x + 25);
   g9.setAttribute('cy', coord.y + 25);
+  g9.setAttribute('r', lightNoise * 2 + 500);
 
   // GATES LOGIC
   if (
